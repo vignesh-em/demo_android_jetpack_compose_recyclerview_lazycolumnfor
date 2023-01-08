@@ -19,12 +19,9 @@ class HybridActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val listItems = intent.getSerializableExtra(LauncherActivity.DATA_KEY) as List<Item>
         binding.recyclerView.apply {
             layoutManager = LinearLayoutManager(this@HybridActivity)
             adapter = HybridRecyclerViewAdapter(listItems)
-            addItemDecoration(MarginItemDecoration(
-                resources.getDimension(R.dimen.default_padding).toInt()))
         }
     }
 }
@@ -38,16 +35,11 @@ class HybridRecyclerViewAdapter(private val listItems: List<Item>)
     }
 
     override fun onBindViewHolder(holder: ComposeItemViewHolder, position: Int) {
-        holder.bindView(listItems[position])
-    }
-
-    override fun onViewRecycled(holder: ComposeItemViewHolder) {
-        super.onViewRecycled(holder)
-        holder.composeView.disposeComposition()
+        holder.bindView(listItems[position % listItems.size])
     }
 
     override fun getItemCount(): Int {
-        return listItems.size
+        return Int.MAX_VALUE
     }
 }
 
@@ -55,12 +47,6 @@ class HybridRecyclerViewAdapter(private val listItems: List<Item>)
 class ComposeItemViewHolder(
     val composeView: ComposeView
 ) : RecyclerView.ViewHolder(composeView) {
-
-    init {
-        composeView.setViewCompositionStrategy(
-            ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed
-        )
-    }
 
     fun bindView(content: Item) {
         composeView.setContent {

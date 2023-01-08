@@ -14,27 +14,6 @@ import java.io.Serializable
 
 class LauncherActivity : ComponentActivity() {
 
-    companion object {
-        const val DATA_KEY = "dataKey"
-    }
-
-    private val listItems = listOf(
-        Item("23,603", "Spain"),
-        Item("23,974", "Germany"),
-        Item("21,638", "Iran"),
-        Item("14,485", "France"),
-        Item("8,897", "Korea, South"),
-        Item("7,014", "Switzerland"),
-        Item("5,071", "United Kingdom"),
-        Item("4,216", "Netherlands"),
-        Item("3,401", "Belgium"),
-        Item("3,244", "Austria"),
-        Item("2,257", "Norway"),
-        Item("1,934", "Sweden"),
-        Item("1,600", "Portugal"),
-        Item("1,530", "Denmark")
-    )
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -45,9 +24,7 @@ class LauncherActivity : ComponentActivity() {
                 Button(
                     onClick = {
                         startActivity(Intent(this@LauncherActivity,
-                            RecyclerViewActivity::class.java).apply {
-                            putExtra(DATA_KEY, listItems as Serializable)
-                        })
+                            RecyclerViewActivity::class.java))
                     }, modifier = Modifier
                         .fillMaxWidth()
                         .padding(16.dp)
@@ -57,9 +34,7 @@ class LauncherActivity : ComponentActivity() {
                 Button(
                     onClick = {
                         startActivity(Intent(this@LauncherActivity,
-                            HybridActivity::class.java).apply {
-                            putExtra(DATA_KEY, listItems as Serializable)
-                        })
+                            HybridActivity::class.java))
                     }, modifier = Modifier
                         .fillMaxWidth()
                         .padding(16.dp)
@@ -69,9 +44,7 @@ class LauncherActivity : ComponentActivity() {
                 Button(
                     onClick = {
                         startActivity(Intent(this@LauncherActivity,
-                            LazyColumnActivity::class.java).apply {
-                                putExtra(DATA_KEY, listItems as Serializable)
-                        })
+                            LazyColumnActivity::class.java))
                     }, modifier = Modifier
                         .fillMaxWidth()
                         .padding(16.dp)

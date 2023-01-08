@@ -19,12 +19,9 @@ class RecyclerViewActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val listItems = intent.getSerializableExtra(LauncherActivity.DATA_KEY) as List<Item>
         binding.recyclerView.apply {
             layoutManager = LinearLayoutManager(this@RecyclerViewActivity)
             adapter = RecyclerViewAdapter(listItems)
-            addItemDecoration(MarginItemDecoration(
-                resources.getDimension(R.dimen.default_padding).toInt()))
         }
     }
 }
@@ -41,11 +38,11 @@ class RecyclerViewAdapter(private val listItems: List<Item>)
     }
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
-        holder.bindView(listItems[position])
+        holder.bindView(listItems[position % listItems.size])
     }
 
     override fun getItemCount(): Int {
-        return listItems.size
+        return Int.MAX_VALUE
     }
 }
 

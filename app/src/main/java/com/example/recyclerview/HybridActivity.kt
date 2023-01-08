@@ -22,8 +22,6 @@ class HybridActivity : AppCompatActivity() {
         binding.recyclerView.apply {
             layoutManager = LinearLayoutManager(this@HybridActivity)
             adapter = HybridRecyclerViewAdapter(listItems)
-            addItemDecoration(MarginItemDecoration(
-                resources.getDimension(R.dimen.default_padding).toInt()))
         }
     }
 }

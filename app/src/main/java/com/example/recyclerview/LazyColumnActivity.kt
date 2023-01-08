@@ -33,12 +33,10 @@ fun MyLazyColumn(
     listItems: List<Item>,
 ) {
     LazyColumn(
-        modifier = modifier,
-        contentPadding = PaddingValues(16.dp, 16.dp, 16.dp)
+        modifier = modifier
     ) {
         items(Int.MAX_VALUE) {
             ViewItem(itemText = listItems[it % listItems.size])
-            Spacer(modifier = Modifier.fillMaxWidth().height(16.dp))
         }
     }
 }
@@ -47,23 +45,25 @@ fun MyLazyColumn(
 fun ViewItem(
     itemText: Item
 ) {
-    Card(
-        shape = RoundedCornerShape(4.dp),
-        backgroundColor = Color(0xFFCCCCCC),
-    ) {
-        Row {
-            Text(
-                text = itemText.number,
-                modifier = Modifier.padding(8.dp),
-                style = TextStyle(fontSize = 24.sp, color = Color.Red),
-                textAlign = TextAlign.Center
-            )
-            Text(
-                text = itemText.country,
-                modifier = Modifier.padding(8.dp),
-                style = TextStyle(fontSize = 24.sp, color = Color.Black),
-                textAlign = TextAlign.Center
-            )
+    Box(modifier = Modifier.padding(16.dp)) {
+        Card(
+            shape = RoundedCornerShape(4.dp),
+            backgroundColor = Color(0xFFCCCCCC),
+        ) {
+            Row {
+                Text(
+                    text = itemText.number,
+                    modifier = Modifier.padding(8.dp),
+                    style = TextStyle(fontSize = 24.sp, color = Color.Red),
+                    textAlign = TextAlign.Center
+                )
+                Text(
+                    text = itemText.country,
+                    modifier = Modifier.padding(8.dp),
+                    style = TextStyle(fontSize = 24.sp, color = Color.Black),
+                    textAlign = TextAlign.Center
+                )
+            }
         }
     }
 }

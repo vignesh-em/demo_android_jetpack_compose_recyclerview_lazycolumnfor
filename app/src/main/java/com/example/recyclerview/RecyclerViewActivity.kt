@@ -22,8 +22,6 @@ class RecyclerViewActivity : AppCompatActivity() {
         binding.recyclerView.apply {
             layoutManager = LinearLayoutManager(this@RecyclerViewActivity)
             adapter = RecyclerViewAdapter(listItems)
-            addItemDecoration(MarginItemDecoration(
-                resources.getDimension(R.dimen.default_padding).toInt()))
         }
     }
 }

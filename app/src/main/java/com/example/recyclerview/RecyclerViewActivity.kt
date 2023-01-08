@@ -47,8 +47,8 @@ class RecyclerViewAdapter(private val listItems: List<Item>)
 }
 
 class ItemViewHolder(private val viewBinding: ViewItemBinding)
-    : RecyclerView.ViewHolder(viewBinding.root) {
-    fun bindView(content: Item) {
+    : RecyclerView.ViewHolder(viewBinding.root), Bindable {
+    override fun bindView(content: Item) {
         viewBinding.itemNumber.text = content.number
         viewBinding.itemCountry.text = content.country
     }

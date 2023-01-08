@@ -51,6 +51,17 @@ class LauncherActivity : ComponentActivity() {
                 ) {
                     Text(text = "Compose LazyColumn", fontSize = 32.sp)
                 }
+
+                Button(
+                    onClick = {
+                        startActivity(Intent(this@LauncherActivity,
+                            HybridComposableActivity::class.java))
+                    }, modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(16.dp)
+                ) {
+                    Text(text = "Rv Item + Composable", fontSize = 32.sp)
+                }
             }
         }
     }

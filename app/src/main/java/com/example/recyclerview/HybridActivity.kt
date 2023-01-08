@@ -19,7 +19,6 @@ class HybridActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val listItems = intent.getSerializableExtra(LauncherActivity.DATA_KEY) as List<Item>
         binding.recyclerView.apply {
             layoutManager = LinearLayoutManager(this@HybridActivity)
             adapter = HybridRecyclerViewAdapter(listItems)

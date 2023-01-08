@@ -16,12 +16,10 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.recyclerview.LauncherActivity.Companion.DATA_KEY
 
 class LazyColumnActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val listItems = intent.getSerializableExtra(DATA_KEY) as List<Item>
         setContent {
             MyLazyColumn(
                 listItems = listItems

@@ -12,6 +12,9 @@
             android:name=".HybridActivity"
             android:exported="true" />
         <activity
+            android:name=".HybridComposableActivity"
+            android:exported="true" />
+        <activity
             android:name=".LazyColumnActivity"
             android:label="LazyColumn" />
         <activity

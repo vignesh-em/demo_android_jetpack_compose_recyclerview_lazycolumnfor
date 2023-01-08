@@ -3,10 +3,7 @@ package com.example.recyclerview
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.ViewGroup
-import androidx.compose.foundation.layout.Row
-import androidx.compose.material.Text
 import androidx.compose.ui.platform.ComposeView
-import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.recyclerview.databinding.ActivityMainBinding
@@ -45,10 +42,10 @@ class HybridRecyclerViewAdapter(private val listItems: List<Item>)
 
 
 class ComposeItemViewHolder(
-    val composeView: ComposeView
-) : RecyclerView.ViewHolder(composeView) {
+    private val composeView: ComposeView
+) : RecyclerView.ViewHolder(composeView), Bindable {
 
-    fun bindView(content: Item) {
+    override fun bindView(content: Item) {
         composeView.setContent {
             ViewItem(content)
         }

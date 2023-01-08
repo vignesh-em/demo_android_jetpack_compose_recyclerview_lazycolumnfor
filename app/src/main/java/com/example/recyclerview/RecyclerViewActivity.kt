@@ -40,11 +40,11 @@ class RecyclerViewAdapter(private val listItems: List<Item>)
     }
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
-        holder.bindView(listItems[position])
+        holder.bindView(listItems[position % listItems.size])
     }
 
     override fun getItemCount(): Int {
-        return listItems.size
+        return Int.MAX_VALUE
     }
 }
 

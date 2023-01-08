@@ -37,16 +37,11 @@ class HybridRecyclerViewAdapter(private val listItems: List<Item>)
     }
 
     override fun onBindViewHolder(holder: ComposeItemViewHolder, position: Int) {
-        holder.bindView(listItems[position])
-    }
-
-    override fun onViewRecycled(holder: ComposeItemViewHolder) {
-        super.onViewRecycled(holder)
-        holder.composeView.disposeComposition()
+        holder.bindView(listItems[position % listItems.size])
     }
 
     override fun getItemCount(): Int {
-        return listItems.size
+        return Int.MAX_VALUE
     }
 }
 
@@ -54,12 +49,6 @@ class HybridRecyclerViewAdapter(private val listItems: List<Item>)
 class ComposeItemViewHolder(
     val composeView: ComposeView
 ) : RecyclerView.ViewHolder(composeView) {
-
-    init {
-        composeView.setViewCompositionStrategy(
-            ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed
-        )
-    }
 
     fun bindView(content: Item) {
         composeView.setContent {

@@ -5,7 +5,6 @@ import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.Text
@@ -37,8 +36,8 @@ fun MyLazyColumn(
         modifier = modifier,
         contentPadding = PaddingValues(16.dp, 16.dp, 16.dp)
     ) {
-        items(listItems) {
-            ViewItem(itemText = it)
+        items(Int.MAX_VALUE) {
+            ViewItem(itemText = listItems[it % listItems.size])
             Spacer(modifier = Modifier.fillMaxWidth().height(16.dp))
         }
     }
